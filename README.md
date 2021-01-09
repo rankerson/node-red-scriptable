@@ -1,5 +1,5 @@
 # node-red-scriptable
-Copyright (C) 2021 by Ranki <s.rankers@einfach-beraten.de>
+2021 by Ranki <s.rankers@einfach-beraten.de>
 
 Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted.
 
