@@ -1,0 +1,61 @@
+{"<widgetName1>":[
+	{
+		"name":"<title element1>",
+		"data":
+			{
+				"value":"10",
+				"unit":"%",
+				"type":"circle"
+			}
+	},
+	{
+		"name":"<title element2>",
+		"data":
+			{
+				"value":"90",
+				"unit":"%",
+				"type":"circle"
+			}
+	},
+	{
+		"name":"<title element3>",
+		"data":
+			{
+				"value":"ON",
+				"unit":"",
+				"type":"switch"
+			}
+	},
+	{
+		"name":"<title element4>",
+		"data":
+			{
+				"value":"ON",
+				"unit":"",
+				"type":"switchSF",
+				"SFSymbol_ON":"flame.fill", // optional
+				"SFSymbol_OFF":"flame" 		// optional
+			}
+	}
+	],
+"<widgetName2>":[
+	{
+		"name":"<title element1>",
+		"data":
+			{
+				"value":"130.123",
+				"unit":"W",
+				"type":"number"
+			}
+	},
+	{
+		"name":"<title element2>",
+		"data":
+			{
+				"value":"2450.9871",
+				"unit":"kWh",
+				"type":"number"
+			}
+	}
+	]
+}
