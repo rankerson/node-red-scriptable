@@ -23,6 +23,11 @@ Enjoy!
 
 *RELEASE NOTES*
 
+Version 1.03 (2021-01-10)
+ - minimal bugfixing
+ - implementation of dataype 'circle'
+ - change default for basic auhentication to 'false'
+
 Version 1.02 (2021-01-09)
  - minimal bugfixing
  - manual dark mode does influence widget background color, but does not provide variable dark
