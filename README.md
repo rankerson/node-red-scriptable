@@ -76,5 +76,6 @@ see file: scriptable.ioswidget
 *NODE-RED INTEGRATION (Example)*
 
 see file: node-red-integration.js
-HINT: Adapt the number of messages within the JOIN node according to your number of messages, which are send to the node. 
+
+_HINT:_ Adapt the number of messages within the JOIN node according to your number of messages, which are send to the node. 
 
