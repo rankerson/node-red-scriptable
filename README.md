@@ -14,6 +14,25 @@ OF THIS SOFTWARE.
 This scriptable shows data from node-red resp. an external JSON-string.
 See further details (example of JSON-file and node-red integration) at the end of the coding!
 
+The scriptable can be used in small or medium mode (see examples). The alignment will be automatically done by the script. 
+
+*FEATURES*
+
+The script can process several types of data like text, numbers (will be rounded), switches (with different possibilities like SFSymbols) and circles (e.g. to show a level indicator).
+
+*EXAMPLES*
+
+<table align="center">
+ <tr>
+   <td width=70%>
+  <img src="examples/node-red-scriptable-medium.jpg"/>
+  </td>
+  <td width=30%>
+  <img src="examples/node-red-scriptable-small.jpg"/>
+  </td>
+ </tr>
+</table>
+
 *INSTALLATION*
 
 1. Implement the node-red-integration.js part into your node-red installation and adapt the created functions to fill the requested JSON. The current implementation expects the file to be written directly to the node-red instance file system. Alternativelly you can also create the file and upload it via FTP to a server of your choice.
@@ -44,6 +63,11 @@ Version 1.01 (2021-01-08)
 
 Version 1.0 (2021-01-06)
 - initial creation
+
+*BACKLOG/ IDEAS*
+
+- enable differentiated text colors (controlled via node-red)
+- definition of text colors for different ranges of the data value (example: 0-25: green, 26-50: yellow; 51-75: orange, 76 - 100: red) 
 
 *EXPECTED JSON-file (Example)*
 
