@@ -31,6 +31,11 @@ The script can process several types of data like text, numbers (will be rounded
   <img src="examples/node-red-scriptable-small.jpg"/>
   </td>
  </tr>
+ <tr>
+   <td colspan=2>
+  <img src="examples/node-red-scriptable-medium_v104.jpg"/>
+  </td>
+ </tr>
 </table>
 
 *INSTALLATION*
@@ -41,6 +46,16 @@ The script can process several types of data like text, numbers (will be rounded
 Enjoy!
 
 *RELEASE NOTES*
+
+Version 1.04 (2021-05-04)
+ - typos corrected
+ - Added general colour support for SFSymbols with function tintSFSymbol(image, color)
+ - Added new type 'SFSymbol' (see example below)
+ - Added color support for type switchSF (see example below)
+ - Function to invert colors in darkmode (ggf. https://stackoverflow.com/questions/35969656/how-can-i-generate-the-opposite-color-according-to-current-color)
+ - changed color definition to Hexadecimal-values only (w/o new Color())
+ - Added cached data, if request fails
+ - Reworked node-red integration and widget-file example (see below)
 
 Version 1.03 (2021-01-10)
  - minimal bugfixing
@@ -66,8 +81,9 @@ Version 1.0 (2021-01-06)
 
 *BACKLOG/ IDEAS*
 
-- enable differentiated text colors (controlled via node-red)
-- definition of text colors for different ranges of the data value (example: 0-25: green, 26-50: yellow; 51-75: orange, 76 - 100: red) 
+ - enable differentiated text colors
+ - definition of text colors for different ranges of the data value (example: 0-25: green, 26-50: yellow; 51-75: orange, 76 - 100: red) 
+ - cache information from last call and reuse, if connection failed
 
 *EXPECTED JSON-file (Example)*
 
