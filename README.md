@@ -83,7 +83,6 @@ Version 1.0 (2021-01-06)
 
  - enable differentiated text colors
  - definition of text colors for different ranges of the data value (example: 0-25: green, 26-50: yellow; 51-75: orange, 76 - 100: red) 
- - cache information from last call and reuse, if connection failed
 
 *EXPECTED JSON-file (Example)*
 
