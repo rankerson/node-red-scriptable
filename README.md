@@ -93,5 +93,3 @@ see file: scriptable.ioswidget
 
 see file: node-red-integration.js
 
-_HINT:_ Adapt the number of messages within the JOIN node according to your number of messages, which are send to the node. 
-
