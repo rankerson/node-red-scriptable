@@ -40,7 +40,7 @@ The script can process several types of data like text, numbers (will be rounded
 
 *INSTALLATION*
 
-1. Implement the node-red-integration.js part into your node-red installation and adapt the created functions to fill the requested JSON. The current implementation expects the file to be written directly to the node-red instance file system. Alternativelly you can also create the file and upload it via FTP to a server of your choice.
+1. Implement the node-red-integration.json part into your node-red installation and adapt the created functions to fill the requested JSON. The current implementation expects the file to be written directly to the node-red instance file system. Alternatively you can also create the file and upload it via FTP to a server of your choice.
 2. Implement the node-red.js into your scriptable app and adapt the variables in the beginning (host, subfolder, filename, opt. authentication etc.)
 
 Enjoy!
