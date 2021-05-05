@@ -1,13 +1,88 @@
 [
     {
-        "id": "f04ebecf.ec2c3",
-        "type": "tab",
-        "label": "Scriptable",
-        "disabled": false,
-        "info": ""
+        "id": "4c94df9d.412af",
+        "type": "function",
+        "z": "f04ebecf.ec2c3",
+        "name": "create Scriptable Test",
+        "func": "// Set widget name here\nmsg.topic = \"Test\";\n\n// Fill your variables, which you want to provide within the different widget elements\nvar valueNumber = \"21\";\nvar valueCircle = \"73\";\nvar valueSwitch = \"true\";\nvar valueSwitch1 = \"OFF\";\n\nvar valueSwitchSF = \"ON\";\nvar valueSwitchSF_Symbol_ON = \"flame.fill\";\nvar valueSwitchSF_Color_Symbol_ON = \"FF000\";\nvar valueSwitchSF_Symbol_OFF = \"flame\";\nvar valueSwitchSF_Color_Symbol_OFF = \"FF0000\";\nvar valueSwitchSF2 = \"ON\";\nvar valueSwitchSF2_Symbol_ON = \"person.fill.checkmark\";\nvar valueSwitchSF2_Color_Symbol_ON = \"31B404\";\nvar valueSwitchSF2_Symbol_OFF = \"person.fill.xmark\";\nvar valueSwitchSF2_Color_Symbol_OFF = \"FF0000\";\nvar valueSwitchSF3 = \"OFF\";\nvar valueSwitchSF3_Symbol_ON = \"person.fill.checkmark\";\nvar valueSwitchSF3_Color_Symbol_ON = \"31B404\";\nvar valueSwitchSF3_Symbol_OFF = \"person.fill.xmark\";\nvar valueSwitchSF3_Color_Symbol_OFF = \"FF0000\";\n\nvar valueText = \"Hello World!\";\nvar valueSFSymbol = \"sun.max.fill\";\nvar valueSFSymbol_Color = \"F7FE2E\";\n\nvar valueSFSymbol2 = \"heart.fill\";\nvar valueSFSymbol2_Color = \"FF0000\";\n\n// Maybe put some logic, if you have to change some values or derive symbols from values ...\nif (valueSwitch == \"true\")\n    valueSwitch = \"ON\";\nelse\n    valueSwitch = \"OFF\";\n\n// Initialize the array (here you have to define how many elements this widget will contain)\nmsg.payload = [0,1,2,3,4,5,6,7,8,9];\n\n// fill each element of the widget with data\nmsg.payload[\"0\"] = {name: \"number\", data: {value: valueNumber, unit: \"°C\", type: \"number\"}};\nmsg.payload[\"1\"] = {name: \"switch\", data: {value: valueSwitch, unit: \"\", type: \"switch\"}};\nmsg.payload[\"2\"] = {name: \"switch1\", data: {value: valueSwitch, unit: \"\", type: \"switch1\"}};\nmsg.payload[\"3\"] = {name: \"circle\", data: {value: valueCircle, unit: \"\", type: \"circle\"}};\n\nmsg.payload[\"4\"] = {name: \"switchSF\", data: {value: valueSwitchSF, unit: \"\", type: \"switchSF\", SFSymbol_ON: valueSwitchSF_Symbol_ON, SFSymbol_ON_Color: valueSwitchSF_Color_Symbol_ON, SFSymbol_OFF: valueSwitchSF_Symbol_OFF, SFSymbol_OFF_Color: valueSwitchSF_Color_Symbol_OFF}};\nmsg.payload[\"5\"] = {name: \"SFSymbol\", data: {value: valueSFSymbol, unit: \"\", type: \"SFSymbol\", SFSymbol_Color: valueSFSymbol_Color}};\nmsg.payload[\"6\"] = {name: \"SFSymbol\", data: {value: valueSFSymbol2, unit: \"\", type: \"SFSymbol\", SFSymbol_Color: valueSFSymbol2_Color}};\nmsg.payload[\"7\"] = {name: \"text\", data: {value: valueText, unit: \"\", type: \"text\"}};\n\nmsg.payload[\"8\"] = {name: \"switchSF\", data: {value: valueSwitchSF2, unit: \"\", type: \"switchSF\", SFSymbol_ON: valueSwitchSF2_Symbol_ON, SFSymbol_ON_Color: valueSwitchSF2_Color_Symbol_ON, SFSymbol_OFF: valueSwitchSF2_Symbol_OFF, SFSymbol_OFF_Color: valueSwitchSF2_Color_Symbol_OFF}};\nmsg.payload[\"9\"] = {name: \"switchSF\", data: {value: valueSwitchSF3, unit: \"\", type: \"switchSF\", SFSymbol_ON: valueSwitchSF3_Symbol_ON, SFSymbol_ON_Color: valueSwitchSF3_Color_Symbol_ON, SFSymbol_OFF: valueSwitchSF3_Symbol_OFF, SFSymbol_OFF_Color: valueSwitchSF3_Color_Symbol_OFF}};\n\n// return the message\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 360,
+        "y": 720,
+        "wires": [
+            [
+                "69fe36d6.4fd6f8",
+                "fcef83b5.52589",
+                "1d4c2418.9a267c"
+            ]
+        ]
     },
     {
-        "id": "95e061c3.7fd7d",
+        "id": "4fb60252.9c177c",
+        "type": "inject",
+        "z": "f04ebecf.ec2c3",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "60",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 720,
+        "wires": [
+            [
+                "4c94df9d.412af"
+            ]
+        ]
+    },
+    {
+        "id": "69fe36d6.4fd6f8",
+        "type": "debug",
+        "z": "f04ebecf.ec2c3",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 570,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "1d4c2418.9a267c",
+        "type": "json",
+        "z": "f04ebecf.ec2c3",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": true,
+        "x": 570,
+        "y": 720,
+        "wires": [
+            [
+                "6e7a1e1e.48e14"
+            ]
+        ]
+    },
+    {
+        "id": "6e7a1e1e.48e14",
         "type": "file",
         "z": "f04ebecf.ec2c3",
         "name": "",
@@ -16,380 +91,10 @@
         "createDir": false,
         "overwriteFile": "true",
         "encoding": "none",
-        "x": 790,
-        "y": 200,
+        "x": 850,
+        "y": 720,
         "wires": [
             []
         ]
-    },
-    {
-        "id": "8fe4e276.a2116",
-        "type": "join",
-        "z": "f04ebecf.ec2c3",
-        "name": "",
-        "mode": "custom",
-        "build": "object",
-        "property": "payload",
-        "propertyType": "msg",
-        "key": "topic",
-        "joiner": "\\n",
-        "joinerType": "str",
-        "accumulate": true,
-        "timeout": "",
-        "count": "3",
-        "reduceRight": false,
-        "reduceExp": "",
-        "reduceInit": "",
-        "reduceInitType": "",
-        "reduceFixup": "",
-        "x": 370,
-        "y": 200,
-        "wires": [
-            [
-                "881da3ad.dd72f",
-                "35df4465.162d7c"
-            ]
-        ]
-    },
-    {
-        "id": "881da3ad.dd72f",
-        "type": "debug",
-        "z": "f04ebecf.ec2c3",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 510,
-        "y": 160,
-        "wires": []
-    },
-    {
-        "id": "35df4465.162d7c",
-        "type": "json",
-        "z": "f04ebecf.ec2c3",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 510,
-        "y": 200,
-        "wires": [
-            [
-                "dc8b16c2.b6d4a8",
-                "95e061c3.7fd7d"
-            ]
-        ]
-    },
-    {
-        "id": "dc8b16c2.b6d4a8",
-        "type": "debug",
-        "z": "f04ebecf.ec2c3",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 630,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "264ce39f.0b3e5c",
-        "type": "comment",
-        "z": "f04ebecf.ec2c3",
-        "name": "Payload to scriptable",
-        "info": "Topic => Widget\nPayload => Widget Elemente\n\n{\"gas\":[\n\t{\n\t\t\"name\":\"Gasverbrauch\",\n\t\t\"data\":\n\t\t\t{\n\t\t\t\t\"value\":\"10\",\n\t\t\t\t\"unit\":\"%\",\n\t\t\t\t\"type\":\"circle\"\n\t\t\t}\n\t},\n\t{\n\t\t\"name\":\"Restkapazität\",\n\t\t\"data\":\n\t\t\t{\n\t\t\t\t\"value\":\"90\",\n\t\t\t\t\"unit\":\"%\",\n\t\t\t\t\"type\":\"circle\"\n\t\t\t}\n\t},\n\t{\n\t\t\"name\":\"Gasheizung\",\n\t\t\"data\":\n\t\t\t{\n\t\t\t\t\"value\":\"ON\",\n\t\t\t\t\"unit\":\"\",\n\t\t\t\t\"type\":\"switch\"\n\t\t\t}\n\t}\n",
-        "x": 150,
-        "y": 120,
-        "wires": []
-    },
-    {
-        "id": "27c7f3ba.d92f1c",
-        "type": "link in",
-        "z": "f04ebecf.ec2c3",
-        "name": "Input4Scriptable",
-        "links": [
-            "3241cda9.b11db2",
-            "2fc56eb3.a14272",
-            "d0fb507a.8178",
-            "d48ccc16.9854a"
-        ],
-        "x": 155,
-        "y": 200,
-        "wires": [
-            [
-                "8fe4e276.a2116"
-            ]
-        ]
-    },
-    {
-        "id": "efe7a236.60784",
-        "type": "function",
-        "z": "f04ebecf.ec2c3",
-        "name": "create Scriptable Übersicht",
-        "func": "msg.topic = \"Übersicht\";\nstrBootTemp_Avg = global.get('Durchschnittstemperatur') || \"n.a.\";\nstrGashzg_Status = global.get('Gasheizung_status') || \"n.a.\";\nstrRestkapazität_human = global.get('gasheizungs_restkapazitaet_human') || \"n.a.\";\nstrBatteriespannung = global.get('bat_volt_inv') || \"n.a.\";\nstrBatterie_akt = global.get('inverter_WattsOut') || \"n.a.\";\nstrLandstrom_akt = global.get('Landstrom_Verbrauch_Current') || \"n.a.\";\nmsg.payload = [0,1,2,3,4,5];\nmsg.payload[\"0\"] = {name: \"Boot\", data: {value: strBootTemp_Avg, unit: \"°C\", type: \"number\"}};\nmsg.payload[\"1\"] = {name: \"Heizung\", data: {value: strGashzg_Status, unit: \"\", type: \"switchSF\", SFSymbol_ON: \"flame.fill\", SFSymbol_OFF: \"flame\"}};\nmsg.payload[\"2\"] = {name: \"Kapazität\", data: {value: strRestkapazität_human.substr(0,5), unit: \"h\", type: \"text\"}};\nmsg.payload[\"3\"] = {name: \"Spannung\", data: {value: strBatteriespannung, unit: \"V\", type: \"number\"}};\nmsg.payload[\"4\"] = {name: \"Batterie\", data: {value: strBatterie_akt, unit: \"W\", type: \"number\"}};\nmsg.payload[\"5\"] = {name: \"Landstrom\", data: {value: strLandstrom_akt, unit: \"W\", type: \"number\"}};\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 380,
-        "y": 360,
-        "wires": [
-            [
-                "58c8d400.2a39bc",
-                "3241cda9.b11db2"
-            ]
-        ]
-    },
-    {
-        "id": "937e9a79.80b648",
-        "type": "inject",
-        "z": "f04ebecf.ec2c3",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "60",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 140,
-        "y": 360,
-        "wires": [
-            [
-                "efe7a236.60784"
-            ]
-        ]
-    },
-    {
-        "id": "58c8d400.2a39bc",
-        "type": "debug",
-        "z": "f04ebecf.ec2c3",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 570,
-        "y": 320,
-        "wires": []
-    },
-    {
-        "id": "3241cda9.b11db2",
-        "type": "link out",
-        "z": "f04ebecf.ec2c3",
-        "name": "Output2Scriptable (Übersicht)",
-        "links": [
-            "27c7f3ba.d92f1c"
-        ],
-        "x": 555,
-        "y": 360,
-        "wires": []
-    },
-    {
-        "id": "2a3824bd.64a33c",
-        "type": "inject",
-        "z": "f04ebecf.ec2c3",
-        "name": "Reset",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "reset",
-                "v": "true",
-                "vt": "bool"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 130,
-        "y": 160,
-        "wires": [
-            [
-                "8fe4e276.a2116"
-            ]
-        ]
-    },
-    {
-        "id": "b50b0bb3.19d498",
-        "type": "function",
-        "z": "f04ebecf.ec2c3",
-        "name": "create Scriptable Temperatur",
-        "func": "msg.topic = \"Temperatur\";\nstrBootTemp_Avg = global.get('Durchschnittstemperatur') || \"n.a.\";\nstrGashzg_Status = global.get('Gasheizung_status') || \"n.a.\";\nstrRestkapazität_human = global.get('gasheizungs_restkapazitaet_human') || \"n.a.\";\nstrRestkapazität_prozent = global.get('gasheizungs_restkapazitaet_proz') || \"n.a.\";\nmsg.payload = [0,1,2];\nmsg.payload[\"0\"] = {name: \"Boot\", data: {value: strBootTemp_Avg, unit: \"°C\", type: \"number\"}};\nmsg.payload[\"1\"] = {name: \"Gasheizung\", data: {value: strGashzg_Status, unit: \"\", type: \"switchSF\", SFSymbol_ON: \"flame.fill\", SFSymbol_OFF: \"flame\"}};\nmsg.payload[\"2\"] = {name: \"Gaskapazität\", data: {value: strRestkapazität_human + \" (\" + strRestkapazität_prozent + \" %)\", unit: \"\", type: \"text\"}};\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 380,
-        "y": 440,
-        "wires": [
-            [
-                "85ec7387.c810c",
-                "2fc56eb3.a14272"
-            ]
-        ]
-    },
-    {
-        "id": "f341a5b3.5c8648",
-        "type": "inject",
-        "z": "f04ebecf.ec2c3",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "60",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 140,
-        "y": 440,
-        "wires": [
-            [
-                "b50b0bb3.19d498"
-            ]
-        ]
-    },
-    {
-        "id": "85ec7387.c810c",
-        "type": "debug",
-        "z": "f04ebecf.ec2c3",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 570,
-        "y": 400,
-        "wires": []
-    },
-    {
-        "id": "2fc56eb3.a14272",
-        "type": "link out",
-        "z": "f04ebecf.ec2c3",
-        "name": "Output2Scriptable (Übersicht)",
-        "links": [
-            "27c7f3ba.d92f1c"
-        ],
-        "x": 555,
-        "y": 440,
-        "wires": []
-    },
-    {
-        "id": "18b14f69.b23f81",
-        "type": "function",
-        "z": "f04ebecf.ec2c3",
-        "name": "create Scriptable Strom",
-        "func": "msg.topic = \"Strom\";\nstrBatteriespannung = global.get('bat_volt_inv') || \"n.a.\";\nstrBatterie_akt = global.get('inverter_WattsOut') || \"n.a.\";\nstrBatterie_ges = global.get('VerbrauchBatterie') || \"n.a.\";\nstrLandstrom_akt = global.get('Landstrom_Verbrauch_Current') || \"n.a.\";\nmsg.payload = [0,1,2,3];\nmsg.payload[\"0\"] = {name: \"Spannung\", data: {value: strBatteriespannung, unit: \"V\", type: \"text\"}};\nmsg.payload[\"1\"] = {name: \"aktuell\", data: {value: strBatterie_akt, unit: \"W\", type: \"number\"}};\nmsg.payload[\"2\"] = {name: \"Gesamt\", data: {value: strBatterie_ges, unit: \"kWh\", type: \"number\"}};\nmsg.payload[\"3\"] = {name: \"Landstrom\", data: {value: strLandstrom_akt, unit: \"W\", type: \"number\"}};\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 370,
-        "y": 520,
-        "wires": [
-            [
-                "bf86818e.57ba5",
-                "d48ccc16.9854a"
-            ]
-        ]
-    },
-    {
-        "id": "603c52d4.4199ec",
-        "type": "inject",
-        "z": "f04ebecf.ec2c3",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "60",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 140,
-        "y": 520,
-        "wires": [
-            [
-                "18b14f69.b23f81"
-            ]
-        ]
-    },
-    {
-        "id": "bf86818e.57ba5",
-        "type": "debug",
-        "z": "f04ebecf.ec2c3",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 560,
-        "y": 480,
-        "wires": []
-    },
-    {
-        "id": "d48ccc16.9854a",
-        "type": "link out",
-        "z": "f04ebecf.ec2c3",
-        "name": "Output2Scriptable (Übersicht)",
-        "links": [
-            "27c7f3ba.d92f1c"
-        ],
-        "x": 555,
-        "y": 520,
-        "wires": []
     }
 ]

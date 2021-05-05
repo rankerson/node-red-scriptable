@@ -1,61 +1,96 @@
-{"<widgetName1>":[
-	{
-		"name":"<title element1>",
-		"data":
-			{
-				"value":"10",
-				"unit":"%",
-				"type":"circle"
-			}
-	},
-	{
-		"name":"<title element2>",
-		"data":
-			{
-				"value":"90",
-				"unit":"%",
-				"type":"circle"
-			}
-	},
-	{
-		"name":"<title element3>",
-		"data":
-			{
-				"value":"ON",
-				"unit":"",
-				"type":"switch"
-			}
-	},
-	{
-		"name":"<title element4>",
-		"data":
-			{
-				"value":"ON",
-				"unit":"",
-				"type":"switchSF",
-				"SFSymbol_ON":"flame.fill", // optional
-				"SFSymbol_OFF":"flame" 		// optional
-			}
-	}
-	],
-"<widgetName2>":[
-	{
-		"name":"<title element1>",
-		"data":
-			{
-				"value":"130.123",
-				"unit":"W",
-				"type":"number"
-			}
-	},
-	{
-		"name":"<title element2>",
-		"data":
-			{
-				"value":"2450.9871",
-				"unit":"kWh",
-				"type":"number"
-			}
-	}
-	]
-}
+[
+    {
+        "name": "number",
+        "data": {
+            "value": "21",
+            "unit": "°C",
+            "type": "number"
+        }
+    },
+    {
+        "name": "switch",
+        "data": {
+            "value": "ON",
+            "unit": "",
+            "type": "switch"
+        }
+    },
+    {
+        "name": "switch1",
+        "data": {
+            "value": "ON",
+            "unit": "",
+            "type": "switch1"
+        }
+    },
+    {
+        "name": "circle",
+        "data": {
+            "value": "73",
+            "unit": "",
+            "type": "circle"
+        }
+    },
+    {
+        "name": "switchSF",
+        "data": {
+            "value": "ON",
+            "unit": "",
+            "type": "switchSF",
+            "SFSymbol_ON": "flame.fill",
+            "SFSymbol_ON_Color": "FF000",
+            "SFSymbol_OFF": "flame",
+            "SFSymbol_OFF_Color": "FF0000"
+        }
+    },
+    {
+        "name": "SFSymbol",
+        "data": {
+            "value": "sun.max.fill",
+            "unit": "",
+            "type": "SFSymbol",
+            "SFSymbol_Color": "F7FE2E"
+        }
+    },
+    {
+        "name": "SFSymbol",
+        "data": {
+            "value": "heart.fill",
+            "unit": "",
+            "type": "SFSymbol",
+            "SFSymbol_Color": "FF0000"
+        }
+    },
+    {
+        "name": "text",
+        "data": {
+            "value": "Hello World!",
+            "unit": "",
+            "type": "text"
+        }
+    },
+    {
+        "name": "switchSF",
+        "data": {
+            "value": "ON",
+            "unit": "",
+            "type": "switchSF",
+            "SFSymbol_ON": "person.fill.checkmark",
+            "SFSymbol_ON_Color": "31B404",
+            "SFSymbol_OFF": "person.fill.xmark",
+            "SFSymbol_OFF_Color": "FF0000"
+        }
+    },
+    {
+        "name": "switchSF",
+        "data": {
+            "value": "OFF",
+            "unit": "",
+            "type": "switchSF",
+            "SFSymbol_ON": "person.fill.checkmark",
+            "SFSymbol_ON_Color": "31B404",
+            "SFSymbol_OFF": "person.fill.xmark",
+            "SFSymbol_OFF_Color": "FF0000"
+        }
+    }
+]
