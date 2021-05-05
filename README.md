@@ -90,5 +90,5 @@ see file: scriptable.ioswidget
 
 *NODE-RED INTEGRATION (Example)*
 
-see file: node-red-integration.js
+see file: node-red-integration.json
 
