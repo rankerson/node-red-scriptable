@@ -707,106 +707,108 @@ function write2error(err_msg_txt, critical = 1) {
 //
 //////////////////////////////////////
 // EXPECTED JSON-file (Example)
-// Filename: scriptable.ioswidget
+// Filename: scriptable_test.json
 //////////////////////////////////////
 // Content:
 /*
-[
-    {
-        "name": "number",
-        "data": {
-            "value": "21",
-            "unit": "°C",
-            "type": "number"
+{
+    "Test": [
+        {
+            "name": "number",
+            "data": {
+                "value": "21",
+                "unit": "°C",
+                "type": "number"
+            }
+        },
+        {
+            "name": "switch",
+            "data": {
+                "value": "ON",
+                "unit": "",
+                "type": "switch"
+            }
+        },
+        {
+            "name": "switch1",
+            "data": {
+                "value": "ON",
+                "unit": "",
+                "type": "switch1"
+            }
+        },
+        {
+            "name": "circle",
+            "data": {
+                "value": "73",
+                "unit": "",
+                "type": "circle"
+            }
+        },
+        {
+            "name": "switchSF",
+            "data": {
+                "value": "ON",
+                "unit": "",
+                "type": "switchSF",
+                "SFSymbol_ON": "flame.fill",
+                "SFSymbol_ON_Color": "FF000",
+                "SFSymbol_OFF": "flame",
+                "SFSymbol_OFF_Color": "FF0000"
+            }
+        },
+        {
+            "name": "SFSymbol",
+            "data": {
+                "value": "sun.max.fill",
+                "unit": "",
+                "type": "SFSymbol",
+                "SFSymbol_Color": "F7FE2E"
+            }
+        },
+        {
+            "name": "SFSymbol",
+            "data": {
+                "value": "heart.fill",
+                "unit": "",
+                "type": "SFSymbol",
+                "SFSymbol_Color": "FF0000"
+            }
+        },
+        {
+            "name": "text",
+            "data": {
+                "value": "Hello World!",
+                "unit": "",
+                "type": "text"
+            }
+        },
+        {
+            "name": "switchSF",
+            "data": {
+                "value": "ON",
+                "unit": "",
+                "type": "switchSF",
+                "SFSymbol_ON": "person.fill.checkmark",
+                "SFSymbol_ON_Color": "31B404",
+                "SFSymbol_OFF": "person.fill.xmark",
+                "SFSymbol_OFF_Color": "FF0000"
+            }
+        },
+        {
+            "name": "switchSF",
+            "data": {
+                "value": "OFF",
+                "unit": "",
+                "type": "switchSF",
+                "SFSymbol_ON": "person.fill.checkmark",
+                "SFSymbol_ON_Color": "31B404",
+                "SFSymbol_OFF": "person.fill.xmark",
+                "SFSymbol_OFF_Color": "FF0000"
+            }
         }
-    },
-    {
-        "name": "switch",
-        "data": {
-            "value": "ON",
-            "unit": "",
-            "type": "switch"
-        }
-    },
-    {
-        "name": "switch1",
-        "data": {
-            "value": "ON",
-            "unit": "",
-            "type": "switch1"
-        }
-    },
-    {
-        "name": "circle",
-        "data": {
-            "value": "73",
-            "unit": "",
-            "type": "circle"
-        }
-    },
-    {
-        "name": "switchSF",
-        "data": {
-            "value": "ON",
-            "unit": "",
-            "type": "switchSF",
-            "SFSymbol_ON": "flame.fill",
-            "SFSymbol_ON_Color": "FF000",
-            "SFSymbol_OFF": "flame",
-            "SFSymbol_OFF_Color": "FF0000"
-        }
-    },
-    {
-        "name": "SFSymbol",
-        "data": {
-            "value": "sun.max.fill",
-            "unit": "",
-            "type": "SFSymbol",
-            "SFSymbol_Color": "F7FE2E"
-        }
-    },
-    {
-        "name": "SFSymbol",
-        "data": {
-            "value": "heart.fill",
-            "unit": "",
-            "type": "SFSymbol",
-            "SFSymbol_Color": "FF0000"
-        }
-    },
-    {
-        "name": "text",
-        "data": {
-            "value": "Hello World!",
-            "unit": "",
-            "type": "text"
-        }
-    },
-    {
-        "name": "switchSF",
-        "data": {
-            "value": "ON",
-            "unit": "",
-            "type": "switchSF",
-            "SFSymbol_ON": "person.fill.checkmark",
-            "SFSymbol_ON_Color": "31B404",
-            "SFSymbol_OFF": "person.fill.xmark",
-            "SFSymbol_OFF_Color": "FF0000"
-        }
-    },
-    {
-        "name": "switchSF",
-        "data": {
-            "value": "OFF",
-            "unit": "",
-            "type": "switchSF",
-            "SFSymbol_ON": "person.fill.checkmark",
-            "SFSymbol_ON_Color": "31B404",
-            "SFSymbol_OFF": "person.fill.xmark",
-            "SFSymbol_OFF_Color": "FF0000"
-        }
-    }
-]
+    ]
+}
 */
 //////////////////////////////////////
 // NODE-RED INTEGRATION (Example)
@@ -818,7 +820,7 @@ function write2error(err_msg_txt, critical = 1) {
         "type": "function",
         "z": "f04ebecf.ec2c3",
         "name": "create Scriptable Test",
-        "func": "// Set widget name here\nmsg.topic = \"Test\";\n\n// Fill your variables, which you want to provide within the different widget elements\nvar valueNumber = \"21\";\nvar valueCircle = \"73\";\nvar valueSwitch = \"true\";\nvar valueSwitch1 = \"OFF\";\n\nvar valueSwitchSF = \"ON\";\nvar valueSwitchSF_Symbol_ON = \"flame.fill\";\nvar valueSwitchSF_Color_Symbol_ON = \"FF000\";\nvar valueSwitchSF_Symbol_OFF = \"flame\";\nvar valueSwitchSF_Color_Symbol_OFF = \"FF0000\";\nvar valueSwitchSF2 = \"ON\";\nvar valueSwitchSF2_Symbol_ON = \"person.fill.checkmark\";\nvar valueSwitchSF2_Color_Symbol_ON = \"31B404\";\nvar valueSwitchSF2_Symbol_OFF = \"person.fill.xmark\";\nvar valueSwitchSF2_Color_Symbol_OFF = \"FF0000\";\nvar valueSwitchSF3 = \"OFF\";\nvar valueSwitchSF3_Symbol_ON = \"person.fill.checkmark\";\nvar valueSwitchSF3_Color_Symbol_ON = \"31B404\";\nvar valueSwitchSF3_Symbol_OFF = \"person.fill.xmark\";\nvar valueSwitchSF3_Color_Symbol_OFF = \"FF0000\";\n\nvar valueText = \"Hello World!\";\nvar valueSFSymbol = \"sun.max.fill\";\nvar valueSFSymbol_Color = \"F7FE2E\";\n\nvar valueSFSymbol2 = \"heart.fill\";\nvar valueSFSymbol2_Color = \"FF0000\";\n\n// Maybe put some logic, if you have to change some values or derive symbols from values ...\nif (valueSwitch == \"true\")\n    valueSwitch = \"ON\";\nelse\n    valueSwitch = \"OFF\";\n\n// Initialize the array (here you have to define how many elements this widget will contain)\nmsg.payload = [0,1,2,3,4,5,6,7,8,9];\n\n// fill each element of the widget with data\nmsg.payload[\"0\"] = {name: \"number\", data: {value: valueNumber, unit: \"°C\", type: \"number\"}};\nmsg.payload[\"1\"] = {name: \"switch\", data: {value: valueSwitch, unit: \"\", type: \"switch\"}};\nmsg.payload[\"2\"] = {name: \"switch1\", data: {value: valueSwitch, unit: \"\", type: \"switch1\"}};\nmsg.payload[\"3\"] = {name: \"circle\", data: {value: valueCircle, unit: \"\", type: \"circle\"}};\n\nmsg.payload[\"4\"] = {name: \"switchSF\", data: {value: valueSwitchSF, unit: \"\", type: \"switchSF\", SFSymbol_ON: valueSwitchSF_Symbol_ON, SFSymbol_ON_Color: valueSwitchSF_Color_Symbol_ON, SFSymbol_OFF: valueSwitchSF_Symbol_OFF, SFSymbol_OFF_Color: valueSwitchSF_Color_Symbol_OFF}};\nmsg.payload[\"5\"] = {name: \"SFSymbol\", data: {value: valueSFSymbol, unit: \"\", type: \"SFSymbol\", SFSymbol_Color: valueSFSymbol_Color}};\nmsg.payload[\"6\"] = {name: \"SFSymbol\", data: {value: valueSFSymbol2, unit: \"\", type: \"SFSymbol\", SFSymbol_Color: valueSFSymbol2_Color}};\nmsg.payload[\"7\"] = {name: \"text\", data: {value: valueText, unit: \"\", type: \"text\"}};\n\nmsg.payload[\"8\"] = {name: \"switchSF\", data: {value: valueSwitchSF2, unit: \"\", type: \"switchSF\", SFSymbol_ON: valueSwitchSF2_Symbol_ON, SFSymbol_ON_Color: valueSwitchSF2_Color_Symbol_ON, SFSymbol_OFF: valueSwitchSF2_Symbol_OFF, SFSymbol_OFF_Color: valueSwitchSF2_Color_Symbol_OFF}};\nmsg.payload[\"9\"] = {name: \"switchSF\", data: {value: valueSwitchSF3, unit: \"\", type: \"switchSF\", SFSymbol_ON: valueSwitchSF3_Symbol_ON, SFSymbol_ON_Color: valueSwitchSF3_Color_Symbol_ON, SFSymbol_OFF: valueSwitchSF3_Symbol_OFF, SFSymbol_OFF_Color: valueSwitchSF3_Color_Symbol_OFF}};\n\n// return the message\nreturn msg;\n\n",
+        "func": "// Set widget name here; unfortunately \n// it has to be maintained as well at the end of the script\n// => msg.payload = {\"Test\":widgetdata};\nvar widgetname = \"Test\";\n\n// Fill your variables, which you want to provide within the different widget elements\nvar valueNumber = \"21\";\nvar valueCircle = \"73\";\nvar valueSwitch = \"true\";\nvar valueSwitch1 = \"OFF\";\n\nvar valueSwitchSF = \"ON\";\nvar valueSwitchSF_Symbol_ON = \"flame.fill\";\nvar valueSwitchSF_Color_Symbol_ON = \"FF000\";\nvar valueSwitchSF_Symbol_OFF = \"flame\";\nvar valueSwitchSF_Color_Symbol_OFF = \"FF0000\";\nvar valueSwitchSF2 = \"ON\";\nvar valueSwitchSF2_Symbol_ON = \"person.fill.checkmark\";\nvar valueSwitchSF2_Color_Symbol_ON = \"31B404\";\nvar valueSwitchSF2_Symbol_OFF = \"person.fill.xmark\";\nvar valueSwitchSF2_Color_Symbol_OFF = \"FF0000\";\nvar valueSwitchSF3 = \"OFF\";\nvar valueSwitchSF3_Symbol_ON = \"person.fill.checkmark\";\nvar valueSwitchSF3_Color_Symbol_ON = \"31B404\";\nvar valueSwitchSF3_Symbol_OFF = \"person.fill.xmark\";\nvar valueSwitchSF3_Color_Symbol_OFF = \"FF0000\";\n\nvar valueText = \"Hello World!\";\nvar valueSFSymbol = \"sun.max.fill\";\nvar valueSFSymbol_Color = \"F7FE2E\";\n\nvar valueSFSymbol2 = \"heart.fill\";\nvar valueSFSymbol2_Color = \"FF0000\";\n\n// Maybe put some logic, if you have to change some values or derive symbols from values ...\nif (valueSwitch == \"true\")\n    valueSwitch = \"ON\";\nelse\n    valueSwitch = \"OFF\";\n\n// Initialize the array (here you have to define how many elements this widget will contain)\nvar widgetdata = [0,1,2,3,4,5,6,7,8,9];\n\n// fill each element of the widget with data\nwidgetdata[\"0\"] = {name: \"number\", data: {value: valueNumber, unit: \"°C\", type: \"number\"}};\nwidgetdata[\"1\"] = {name: \"switch\", data: {value: valueSwitch, unit: \"\", type: \"switch\"}};\nwidgetdata[\"2\"] = {name: \"switch1\", data: {value: valueSwitch, unit: \"\", type: \"switch1\"}};\nwidgetdata[\"3\"] = {name: \"circle\", data: {value: valueCircle, unit: \"\", type: \"circle\"}};\n\nwidgetdata[\"4\"] = {name: \"switchSF\", data: {value: valueSwitchSF, unit: \"\", type: \"switchSF\", SFSymbol_ON: valueSwitchSF_Symbol_ON, SFSymbol_ON_Color: valueSwitchSF_Color_Symbol_ON, SFSymbol_OFF: valueSwitchSF_Symbol_OFF, SFSymbol_OFF_Color: valueSwitchSF_Color_Symbol_OFF}};\nwidgetdata[\"5\"] = {name: \"SFSymbol\", data: {value: valueSFSymbol, unit: \"\", type: \"SFSymbol\", SFSymbol_Color: valueSFSymbol_Color}};\nwidgetdata[\"6\"] = {name: \"SFSymbol\", data: {value: valueSFSymbol2, unit: \"\", type: \"SFSymbol\", SFSymbol_Color: valueSFSymbol2_Color}};\nwidgetdata[\"7\"] = {name: \"text\", data: {value: valueText, unit: \"\", type: \"text\"}};\n\nwidgetdata[\"8\"] = {name: \"switchSF\", data: {value: valueSwitchSF2, unit: \"\", type: \"switchSF\", SFSymbol_ON: valueSwitchSF2_Symbol_ON, SFSymbol_ON_Color: valueSwitchSF2_Color_Symbol_ON, SFSymbol_OFF: valueSwitchSF2_Symbol_OFF, SFSymbol_OFF_Color: valueSwitchSF2_Color_Symbol_OFF}};\nwidgetdata[\"9\"] = {name: \"switchSF\", data: {value: valueSwitchSF3, unit: \"\", type: \"switchSF\", SFSymbol_ON: valueSwitchSF3_Symbol_ON, SFSymbol_ON_Color: valueSwitchSF3_Color_Symbol_ON, SFSymbol_OFF: valueSwitchSF3_Symbol_OFF, SFSymbol_OFF_Color: valueSwitchSF3_Color_Symbol_OFF}};\n\n// payload vorbereiten\nmsg.topic = widgetname;\nmsg.payload = {\"Test\":widgetdata};\n\n// return the message\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -828,7 +830,6 @@ function write2error(err_msg_txt, critical = 1) {
         "wires": [
             [
                 "69fe36d6.4fd6f8",
-                "fcef83b5.52589",
                 "1d4c2418.9a267c"
             ]
         ]
@@ -900,7 +901,7 @@ function write2error(err_msg_txt, critical = 1) {
         "type": "file",
         "z": "f04ebecf.ec2c3",
         "name": "",
-        "filename": "/home/pi/.node-red/public/scriptable/scriptable.ioswidget",
+        "filename": "/home/pi/.node-red/public/scriptable/scriptable_test.json",
         "appendNewline": true,
         "createDir": false,
         "overwriteFile": "true",
