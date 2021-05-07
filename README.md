@@ -24,6 +24,16 @@ The script can process several types of data like text, numbers (will be rounded
 
 <table align="center">
  <tr>
+  <td colspan=2>
+  <img src="examples/node-red-scriptable-medium_v104.jpg"/>
+  </td>
+ </tr>
+  <tr>
+   <td colspan=2>
+  Medium size widget, «Hello world» example, v1.04
+  </td>
+ </tr>
+ <tr>
    <td width=70%>
   <img src="examples/node-red-scriptable-medium.jpg"/>
   </td>
@@ -31,9 +41,28 @@ The script can process several types of data like text, numbers (will be rounded
   <img src="examples/node-red-scriptable-small.jpg"/>
   </td>
  </tr>
+  <tr>
+   <td width=70%>
+  Medium size Widget, user example: Ranki, v1.03
+  </td>
+  <td width=30%>
+  Small size Widget, user example: Ranki, v1.02
+  </td>
+ </tr>
  <tr>
-   <td colspan=2>
-  <img src="examples/node-red-scriptable-medium_v104.jpg"/>
+   <td width=70%>
+  <img src="examples/node-red-scriptable-medium_v104_2.jpg"/>
+  </td>
+  <td width=30%>
+  &nbsp;
+  </td>
+ </tr>
+  <tr>
+   <td width=70%>
+  Medium size Widget, user example: Jochen, v1.04
+  </td>
+  <td width=30%>
+  &nbsp;
   </td>
  </tr>
 </table>
