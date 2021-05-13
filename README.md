@@ -75,6 +75,7 @@ The script can process several types of data like text, numbers (will be rounded
 Enjoy!
 
 *RELEASE NOTES*
+
 Version 1.05 (13.05.2021)
  - typos corrected
  - introduced general possibility to transfer color information in data.color
