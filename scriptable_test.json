@@ -3,7 +3,7 @@
         {
             "name": "number",
             "data": {
-                "value": "21",
+                "value": 21,
                 "unit": "°C",
                 "type": "number"
             }
@@ -27,9 +27,10 @@
         {
             "name": "circle",
             "data": {
-                "value": "73",
+                "value": 73,
                 "unit": "",
-                "type": "circle"
+                "type": "circle",
+                "color": "008000"
             }
         },
         {
@@ -39,7 +40,7 @@
                 "unit": "",
                 "type": "switchSF",
                 "SFSymbol_ON": "flame.fill",
-                "SFSymbol_ON_Color": "FF000",
+                "SFSymbol_ON_Color": "FF0000",
                 "SFSymbol_OFF": "flame",
                 "SFSymbol_OFF_Color": "FF0000"
             }
@@ -50,7 +51,7 @@
                 "value": "sun.max.fill",
                 "unit": "",
                 "type": "SFSymbol",
-                "SFSymbol_Color": "F7FE2E"
+                "color": "F7FE2E"
             }
         },
         {
@@ -59,7 +60,7 @@
                 "value": "heart.fill",
                 "unit": "",
                 "type": "SFSymbol",
-                "SFSymbol_Color": "FF0000"
+                "color": "FF0000"
             }
         },
         {
@@ -67,7 +68,8 @@
             "data": {
                 "value": "Hello World!",
                 "unit": "",
-                "type": "text"
+                "type": "text",
+                "color": "0000FF"
             }
         },
         {
