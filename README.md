@@ -25,12 +25,12 @@ The script can process several types of data like text, numbers (will be rounded
 <table align="center">
  <tr>
   <td colspan=2>
-  <img src="examples/node-red-scriptable-medium_v104.jpg"/>
+  <img src="examples/node-red-scriptable-medium_v105.jpg"/>
   </td>
  </tr>
   <tr>
    <td colspan=2>
-  Medium size widget, «Hello world» example, v1.04
+  Medium size widget, «Hello world» example, v1.05
   </td>
  </tr>
  <tr>
@@ -75,6 +75,14 @@ The script can process several types of data like text, numbers (will be rounded
 Enjoy!
 
 *RELEASE NOTES*
+Version 1.05 (13.05.2021)
+ - typos corrected
+ - introduced general possibility to transfer color information in data.color
+ - changed structure in SFSymbol from data.SFSymbol_Color to data.color  (but downside compatible)
+ - enabled possibility to determ color of circle filling
+ - switch to use dark mode added
+ - code resturctured a little bit in order to have all settings at the top
+ - optimized node-red example
 
 Version 1.04 (2021-05-04)
  - typos corrected
