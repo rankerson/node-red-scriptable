@@ -20,6 +20,7 @@
 //
 // VERSION (Release notes at the bottom)
 //
+// 1.06 (2022-07-06)
 // 1.05 (2021-05-13)
 // 1.04 (2021-05-04)
 // 1.03 (2021-01-10)
@@ -439,6 +440,7 @@ async function createElement(hstack, element) {
 					case "switchSF":
 						write2log("switch datatype: switchSF (" + strType + ")",3); 			
 						var strSymbol = "questionmark.square";
+						var symclrSFSymbol = symclrSFSymbol_Default;
 						if (strValue == "ON") {
 							// check SFSymbols 													
 							if (data.SFSymbol_ON == null)
@@ -478,7 +480,7 @@ async function createElement(hstack, element) {
 					case "SFSymbol":															
 						write2log("switch datatype: SFSymbol (" + strType + ")",3); 			
 						if (data.value == null)													
-							strSymbol = "questionmark.square";									
+							strSymbol = "questionmark.square";
 						else																	
 							strSymbol = data.value;												
 						if ((data.color == null) && (data.SFSymbol_Color == null)) 				
@@ -689,6 +691,8 @@ function write2error(err_msg_txt, critical = 1) {
 //////////////////////////////////////
 // RELEASE NOTES
 //////////////////////////////////////
+// Version 1.06
+// - short bugfix as variable 'symclrSFSymbol' was not initialized 
 //
 // Version 1.05
 // - typos corrected
