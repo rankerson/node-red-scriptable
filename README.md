@@ -78,7 +78,7 @@ Enjoy!
 
 Version 1.06 (23.06.2025)
  - Introduced an update value for the last update of data (filled by source system)
- - Possibility to transfer more Parameters divided by &<parametername>=<parametervalue> in Widget-Settings
+ - Possibility to transfer more Parameters divided by &parametername=parametervalue in Widget-Settings
    The following parameters can be send/overwritten:
      - host
      - subfolder
