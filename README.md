@@ -76,6 +76,11 @@ Enjoy!
 
 *RELEASE NOTES*
 
+Version 1.06 (23.06.2025)
+ - Introduced an update value for the last update of data (filled by source system)
+ - Possibility to transfer more Parameters divided by &<parametername>=<parametervalue> in Widget-Settings
+ - Introduce widget-Parameter "forceDarkMode" to force Darkmode for widget independent from Device status
+
 Version 1.05 (13.05.2021)
  - typos corrected
  - introduced general possibility to transfer color information in data.color
