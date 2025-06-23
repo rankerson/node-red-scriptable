@@ -79,6 +79,15 @@ Enjoy!
 Version 1.06 (23.06.2025)
  - Introduced an update value for the last update of data (filled by source system)
  - Possibility to transfer more Parameters divided by &<parametername>=<parametervalue> in Widget-Settings
+   The following parameters can be send/overwritten:
+     - host
+     - subfolder
+     - filename
+     - auth_necessary
+     - username
+     - password
+     - bolUseDarkMode
+     - forceDarkMode (new with v1.06)
  - Introduce widget-Parameter "forceDarkMode" to force Darkmode for widget independent from Device status
 
 Version 1.05 (13.05.2021)
