@@ -1,6 +1,3 @@
-// Variables used by Scriptable.
-// These must be at the very top of the file. Do not edit.
-// icon-color: blue; icon-glyph: chalkboard-teacher;
 //
 // Created 2021 by Ranki <s.rankers@einfach-beraten.de>
 //
@@ -20,74 +17,83 @@
 //
 // VERSION (Release notes at the bottom)
 //
-// 1.06 (2022-07-06)
+// 1.06 (2025-06-23)
 // 1.05 (2021-05-13)
 // 1.04 (2021-05-04)
-// 1.03 (2021-01-10)
+// g1.03 (2021-01-10)
 // 1.02 (2021-01-09)
 // 1.01 (2021-01-08)
 // 1.0 (2021-01-06)
-var version = "v1.05"; 													
+var version = "v1.06"; 													// v1.06
 ///////////////////////////////////////
 // BASIC SETTINGS
 ///////////////////////////////////////
 // Set Debug level for console (0 = Error, 1 = Info, 2 = More, 3 = All)
-var debuglvl = 0;														// CHANGE HERE
+var debuglvl = 3;														// CHANGE HERE
 
-// Server (with ending "/")
-let host = "<HOST URL and Port>";										// CHANGE HERE
+// Parse widget Parameter
+const widgetParam = parseWidgetParameter(args.widgetParameter);			// v1.06
 
-// Subfolder (with ending "/")
-let subfolder = "scriptable/";											// CHANGE HERE
+// Server (with ending "/") 
+const host = getParam(widgetParam, "host", "<HOST URL and Port>");		// CHANGE HERE // v1.06
+
+// Subfolder (with ending "/")// 
+// let subfolder = "scriptable/";	
+const subfolder = getParam(widgetParam, "subfolder", "");				// CHANGE HERE // v1.06
 
 // Filename with widgetdata in accurate format (see below)
-let filename = "scriptable_test.json";									// CHANGE HERE
+const filename = getParam(widgetParam, "filename", "scriptable.json");	// CHANGE HERE // v1.06
 
 // Specify your standard widget name (used, if no argument is given or in console)
-var widgetName_Default = "Test"											// CHANGE HERE 
+var widgetName_Default = "Übersicht"									// CHANGE HERE // v1.05
 
 // settings for basic authentification to get file from server
 // Specify authentication string (Base64-coded)
-let auth_necessary = false; 											// CHANGE HERE
-let username = "<username>";											// CHANGE HERE
-let password = "<passcode>";											// CHANGE HERE
+const auth_necessary = getParam(widgetParam, "auth_necessary", "false");// CHANGE HERE // v1.06
+const username = getParam(widgetParam, "username", "<username>");		// CHANGE HERE // v1.06
+const password = getParam(widgetParam, "password", "<password>");		// CHANGE HERE // v1.06
 
-// change «true» to «false», if you do not want to use dark mode		
-var bolUseDarkMode = true;												// CHANGE HERE 
+// change «true» to «false», if you do not want to use dark mode		// v1.05
+const bolUseDarkMode = getParam(widgetParam, "bolUseDarkMode", "true");	// CHANGE HERE // v1.06
+const forceDarkMode = getParam(widgetParam, "forceDarkMode", "false");	// v1.06
 
-if (bolUseDarkMode)														// CHANGE HERE 
-	var dark = Device.isUsingDarkAppearance(); 							
-else																	
-	var dark = false;													
-write2log("DarkMode: " + dark,2);		 								
+if (forceDarkMode === "true")											// v1.06
+	var dark = true;													// v1.06
+else {																	// v1.06
+	if (bolUseDarkMode === "true")										// v1.05
+		var dark = Device.isUsingDarkAppearance(); 						// v1.01
+	else																// v1.05
+		var dark = false;												// v1.05
+}																		// v1.06
+write2log("DarkMode: " + dark,2);		 								// v1.01
 
-// Definition of colours and variation for darkmode			 			
-if (dark) { 															
-	var clrWidgetBackground = "000000"; 								// CHANGE HERE
-	var txtclrWidgetTitle = "FFFFFF"; 									// CHANGE HERE
-	var txtclrWidgetFooter = "F2F2F2"; 									// CHANGE HERE
-	var txtclrElementTitle = "FFFFFF";									// CHANGE HERE
-	var txtclrElementData = "FFFFFF";									// CHANGE HERE
-	var txtclrElementCircle = "FFFFFF"; 								// CHANGE HERE
-	var clrElementCircleStroke = "A4A4A4"; 								// CHANGE HERE
-	var clrElementCircleFill = "FF0000";								// CHANGE HERE
-	var txtclrErrorTitle = "FF0000"; 									// CHANGE HERE
-	var txtclrErrorMsg = "FF0000"; 										// CHANGE HERE
-	var symclrSFSymbol_Default = "FFFFFF"; 								// CHANGE HERE
-	}		 															
-else { 																	
-	var clrWidgetBackground = "FFFFFF";		 							// CHANGE HERE
-	var txtclrWidgetTitle = "000000"; 									// CHANGE HERE
-	var txtclrWidgetFooter = "6E6E6E";									// CHANGE HERE
-	var txtclrElementTitle = "000000";		 							// CHANGE HERE
-	var txtclrElementData = "000000"; 									// CHANGE HERE
-	var txtclrElementCircle = "000000"; 								// CHANGE HERE
-	var clrElementCircleStroke = "A4A4A4";								// CHANGE HERE
-	var clrElementCircleFill = "FF0000"; 								// CHANGE HERE
-	var txtclrErrorTitle = "FF0000";									// CHANGE HERE
-	var txtclrErrorMsg = "FF0000";										// CHANGE HERE
-	var symclrSFSymbol_Default = "000000"; 								// CHANGE HERE
-	} 																	
+// Definition of colours and variation for darkmode			 			// v1.01
+if (dark) { 															// v1.01
+	var clrWidgetBackground = "000000"; 								// CHANGE HERE// v1.04
+	var txtclrWidgetTitle = "FFFFFF"; 									// CHANGE HERE// v1.04
+	var txtclrWidgetFooter = "F2F2F2"; 									// CHANGE HERE// v1.04
+	var txtclrElementTitle = "FFFFFF";									// CHANGE HERE// v1.04
+	var txtclrElementData = "FFFFFF";									// CHANGE HERE// v1.04
+	var txtclrElementCircle = "FFFFFF"; 								// CHANGE HERE// v1.04
+	var clrElementCircleStroke = "A4A4A4"; 								// CHANGE HERE// v1.04
+	var clrElementCircleFill = "FF0000";								// CHANGE HERE// v1.04
+	var txtclrErrorTitle = "FF0000"; 									// CHANGE HERE// v1.04
+	var txtclrErrorMsg = "FF0000"; 										// CHANGE HERE// v1.04
+	var symclrSFSymbol_Default = "FFFFFF"; 								// CHANGE HERE// v1.04
+	}		 															// v1.01
+else { 																	// v1.01
+	var clrWidgetBackground = "FFFFFF";		 							// CHANGE HERE// v1.04
+	var txtclrWidgetTitle = "000000"; 									// CHANGE HERE// v1.04
+	var txtclrWidgetFooter = "6E6E6E";									// CHANGE HERE// v1.04
+	var txtclrElementTitle = "000000";		 							// CHANGE HERE// v1.04
+	var txtclrElementData = "000000"; 									// CHANGE HERE// v1.04
+	var txtclrElementCircle = "000000"; 								// CHANGE HERE// v1.04
+	var clrElementCircleStroke = "A4A4A4";								// CHANGE HERE// v1.04
+	var clrElementCircleFill = "FF0000"; 								// CHANGE HERE// v1.04
+	var txtclrErrorTitle = "FF0000";									// CHANGE HERE// v1.04
+	var txtclrErrorMsg = "FF0000";										// CHANGE HERE// v1.04
+	var symclrSFSymbol_Default = "000000"; 								// CHANGE HERE// v1.04
+	} 																	// v1.01
 
 // Definition of sizes (text and images)
 var sizeWidgetTitleImage = 15;
@@ -96,54 +102,54 @@ var sizeWidgetFooter = 6;
 var sizeElementTitle = 10;
 var sizeElementData = 14;
 var sizeElementSymbol = 14;
-var sizeErrorTitle = 14; 												
-var sizeErrorMsg = 14; 													
+var sizeErrorTitle = 14; 												// v1.01
+var sizeErrorMsg = 14; 													// v1.01
 
-// Definition of cirlce 												
-const canvSize = 50 													
-const canvTextSize = canvSize / 4 										
-const canvWidth = canvSize * 0.15 										
-const canvRadius = Math.floor(canvSize / 2.5)  							
+// Definition of cirlce 												// v1.03
+const canvSize = 50 													// v1.03
+const canvTextSize = canvSize / 4 										// v1.03
+const canvWidth = canvSize * 0.15 										// v1.03
+const canvRadius = Math.floor(canvSize / 2.5)  							// v1.03
 
 // Setting for maximum connection retry
-let maxDownloadRetry = 3; 												
+let maxDownloadRetry = 5; 												// v1.01
 
 ///////////////////////////////////////
 // START CODING - normaly you should not change sth. below except you know, what you're doing
 ///////////////////////////////////////
-write2log("host: " + host,2); 											
-write2log("subfolder: " + subfolder,3); 								
-write2log("filename: " + filename,3); 									
-write2log("auth_necessary: " + auth_necessary,3); 						
+write2log("host: " + host,2); 											// v1.01
+write2log("subfolder: " + subfolder,3); 								// v1.01
+write2log("filename: " + filename,3); 									// v1.01
+write2log("auth_necessary: " + auth_necessary,3); 						// v1.01
 
-// Initialize runtime of script											
-let update_time = new Date();											
-update_time = update_time.toLocaleString();								
+// Initialize runtime of script											// v1.04
+let update_time = new Date();											// v1.04
+update_time = update_time.toLocaleString();								// v1.04
 		
-// Initialization of errormsg 											
-var errormsg = []; 														
-var critical_errors = 0; 												
+// Initialization of errormsg 											// v1.01
+var errormsg = []; 														// v1.01
+var critical_errors = 0; 												// v1.02
 
-// Initialization of filemanager										
-  let fm = FileManager.local()											
-  let dir = fm.documentsDirectory()										
-  let path = fm.joinPath(dir, filename)									
+// Initialization of filemanager										// v1.04
+  let fm = FileManager.local()											// v1.04
+  let dir = fm.documentsDirectory()										// v1.04
+  let path = fm.joinPath(dir, filename)									// v1.04
 
 // Authentication header
-if (auth_necessary) var authheader = { "Authorization": "Basic " + btoa(username + ":" + password) };
+if (auth_necessary === "true") var authheader = { "Authorization": "Basic " + btoa(username + ":" + password) };
+
+
 
 // Read of Widget-parameter (Widget Name to get only parts of provided file)
-let widgetName = args.widgetParameter;
-// Provide Standard widget name, if no widget name is presented in widget parameters
-if (widgetName == null) widgetName = widgetName_Default;				
+const widgetName = getParam(widgetParam, "widgetname", widgetName_Default);	// v1.06
 write2log("widgetName: " + widgetName,3);
 
 var widgetsData = await downloadData();
 
-if (typeof widgetsData[widgetName] != 'object') { 						
-	write2error("JSON enthält keine Daten für Widget: " + widgetName); 	
-} 																		
-else {																	
+if (typeof widgetsData[widgetName] != 'object') { 						// v1.02
+	write2error("JSON enthält keine Daten für Widget: " + widgetName); 	// v1.02
+} 																		// v1.02
+else {																	// v1.02
 	write2log("widgetsData: " + JSON.stringify(widgetsData[widgetName]),3);
 	var numElements = countProperties(widgetsData[widgetName]);
 	// Determe max. count of elements per line (horizontally) calculated from number of elements in provided data
@@ -162,7 +168,7 @@ else {
 
 	// Create widget
 		var widget = await createWidget(widgetsData[widgetName]);
-		widget.backgroundColor = new Color(clrWidgetBackground); 				
+		widget.backgroundColor = new Color(clrWidgetBackground); 				// v1.02
 		// Determe size of widget output calculated from maxElementsLine (see above)
 		switch (maxElementsLine) {
 			case (1):
@@ -177,37 +183,37 @@ else {
 			default:
 				widget.presentLarge(); 
 		}
-} 																				
-write2log("Anzahl Fehlermeldungen: " + errormsg.length,1); 						
-write2log("Anzahl kritischer Fehlermeldungen: " + critical_errors,1); 			
+} 																				// v1.02
+write2log("Anzahl Fehlermeldungen: " + errormsg.length,1); 						// v1.01
+write2log("Anzahl kritischer Fehlermeldungen: " + critical_errors,1); 			// v1.02
 // If there are critical error messages, the initial widget has to be deleted.
-if (critical_errors > 0) widget = null; 										
+if (critical_errors > 0) widget = null; 										// v1.02
 
-if ((critical_errors > 0) && (errormsg.length  != 0)) { 						
-	sizeErrorTitle = sizeErrorTitle - errormsg.length; 							
-	sizeErrorMsg = sizeErrorMsg - (errormsg.length * 2); 						
-	var widget = new ListWidget(); 												
-	widget.backgroundColor = new Color(clrWidgetBackground); 					
+if ((critical_errors > 0) && (errormsg.length  != 0)) { 						// v1.02
+	sizeErrorTitle = sizeErrorTitle - errormsg.length; 							// v1.02
+	sizeErrorMsg = sizeErrorMsg - (errormsg.length * 2); 						// v1.02
+	var widget = new ListWidget(); 												// v1.01
+	widget.backgroundColor = new Color(clrWidgetBackground); 					// v1.02
 
-	await createWidgetHeader(widget); 											
-	const stack = widget.addStack(); 											
-	stack.layoutVertically();													
-	stack.topAlignContent(); 													
+	await createWidgetHeader(widget); 											// v1.01
+	const stack = widget.addStack(); 											// v1.01
+	stack.layoutVertically();													// v1.01
+	stack.topAlignContent(); 													// v1.01
 	
-	const title = stack.addText("Fehler:"); 									
-	title.font = Font.boldSystemFont(sizeErrorTitle); 							
-	title.textColor = new Color(txtclrErrorTitle); 								
+	const title = stack.addText("Fehler:"); 									// v1.01
+	title.font = Font.boldSystemFont(sizeErrorTitle); 							// v1.01
+	title.textColor = new Color(txtclrErrorTitle); 								// v1.04
 
-	for (let err_msg_txt of errormsg) { 										
-		const msg = stack.addText(err_msg_txt); 								
-		msg.font = Font.boldSystemFont(sizeErrorMsg); 							
-		msg.textColor = new Color(txtclrErrorMsg); 								
-		stack.addSpacer(1); 													
-	} 																			
+	for (let err_msg_txt of errormsg) { 										// v1.01
+		const msg = stack.addText(err_msg_txt); 								// v1.01
+		msg.font = Font.boldSystemFont(sizeErrorMsg); 							// v1.01
+		msg.textColor = new Color(txtclrErrorMsg); 								// v1.04
+		stack.addSpacer(1); 													// v1.01
+	} 																			// v1.01
 
-	await createWidgetFooter(widget); 											
-	widget.presentSmall(); 														
-} 																				
+	await createWidgetFooter(widget); 											// v1.01
+	widget.presentSmall(); 														// v1.01
+} 																				// v1.01
 
 Script.setWidget(widget);
 Script.complete();
@@ -215,62 +221,63 @@ Script.complete();
 async function downloadData() {
 	write2log("Function downloadData",1);
     try{
-		counter = 1; 															
-		while (counter <= maxDownloadRetry) { 									
-			write2log("Try to download JSON-data (" + counter + " of " + maxDownloadRetry + ")",3); 
-			counter++; 															
+		counter = 1; 															// v1.01
+		while (counter <= maxDownloadRetry) { 									// v1.01
+			write2log("Try to download JSON-data (" + counter + " of " + maxDownloadRetry + ")",3); // v1.01
+			counter++; 															// v1.01
 			
 			let req = new Request(host + subfolder + filename);
 			if (auth_necessary) req.headers = authheader;
 			write2log("Request: " + JSON.stringify(req),3);
 
-			var value = await req.loadString(); 								
-			try{ 																
-				value = JSON.parse(value); 										
+			var value = await req.loadString(); 								// v1.01
+			try{ 																// v1.01
+				value = JSON.parse(value); 										// v1.01
 				}
-			catch(err) { 														
-					console.error(err); 										
-					write2log("no valid JSON",1); 								
-				} 
-			if (typeof value == 'object') { 									
-				write2log("JSON: " + JSON.stringify(value),2); 					
-				counter = 99; 													
-				} 																
-		} 																		
-		if (typeof value != 'object') { 
-			write2log("Konnte die JSON-Daten nicht herunterladen."); 			
-			value = JSON.parse(fm.readString(path), null);						
-			if (!value) {														
-				write2error("Function downloadData: Konnte Daten aus Cache nicht herstellen."); 				
-				return "{}";													
-			}																	
-			else {																
-				update_time = update_time + " (cached)"							
-				return value;													
+			catch(err) { 														// v1.01
+					console.error(err); 										// v1.01
+					write2log("no valid JSON",1); 								// v1.01
+				} // v1.01
+			if (typeof value == 'object') { 									// v1.01
+				write2log("JSON: " + JSON.stringify(value),2); 					// v1.01
+				counter = 99; 													// v1.01
+				} 																// v1.01
+		} 																		// v1.01
+		if (typeof value != 'object') { // v1.01
+			write2log("Konnte die JSON-Daten nicht herunterladen."); 			// v1.04
+			value = JSON.parse(fm.readString(path), null);						// v1.04
+			if (!value) {														// v1.04
+				write2error("Function downloadData: Konnte Daten aus Cache nicht herstellen."); 				// v1.04
+				return "{}";													// v1.04
+			}																	// v1.04
+			else {																// v1.04
+				update_time = update_time + " (cached)"							// v1.04
+				return value;													// v1.04
 			}
-			} 																	
-		else {																	
-		    // Write JSON to iCloud file										
-			fm.writeString(path, JSON.stringify(value, null, 2))				
+			} 																	// v1.01
+		else {																	// v1.01
+		    // Write JSON to iCloud file										// v1.04
+			fm.writeString(path, JSON.stringify(value, null, 2))				// v1.04
+			write2log("Downloaded data: " + value,2); 							// v1.06
 			return value;
 		}
     } catch(err) {
-		write2log("Function downloadData: " + err); 							
-		value = JSON.parse(fm.readString(path), null);							
-		if (!value) {															
-			write2error("Function downloadData: Konnte Daten aus Cache nicht herstellen."); 				
-			return "{}";														
-		}																		
-		else {																	
-			update_time = update_time + " (cached)"								
-			return value;														
+		write2log("Function downloadData: " + err); 							// v1.04
+		value = JSON.parse(fm.readString(path), null);							// v1.04
+		if (!value) {															// v1.04
+			write2error("Function downloadData: Konnte Daten aus Cache nicht herstellen."); 				// v1.04
+			return "{}";														// v1.04
+		}																		// v1.04
+		else {																	// v1.04
+			update_time = update_time + " (cached)"								// v1.04
+			return value;														// v1.04
 		}
     }
 }
 
 async function createWidget(widgetsData){
-	try{ 
-		write2log("Function createWidget: " + JSON.stringify(widgetsData),1); 	
+	try{ // v1.02
+		write2log("Function createWidget: " + JSON.stringify(widgetsData),1); 	// v1.01
 		const widget = new ListWidget();
 		
 		await createWidgetHeader(widget);
@@ -282,141 +289,141 @@ async function createWidget(widgetsData){
 		
 		for(let element of widgetsData) {
 			counter++;
-			write2log("Function createWidget (element): " + element.name,2); 	
+			write2log("Function createWidget (element): " + element.name,2); 	// v1.01
 			// Create single elements with title and data
-			if (typeof element == 'object') { 									
+			if (typeof element == 'object') { 									// v1.03
 				await createElement(hstack, element);
 			
 				// Determe, if data is shown in a new column or new row
 				if (counter % maxElementsLine != 0) {
-					write2log("hstack.addSpacer",3); 							
+					write2log("hstack.addSpacer",3); 							// v1.01
 					hstack.addSpacer(15);
 				}
 				else {
-					write2log("widget.addSpacer",3); 							
+					write2log("widget.addSpacer",3); 							// v1.01
 					widget.addSpacer(1);
-					write2log("widget.addStack",3); 							
+					write2log("widget.addStack",3); 							// v1.01
 					hstack = widget.addStack();
 					hstack.layoutHorizontally();
 				}	
-			} 																	
-			else 																
-				write2error("Function createWidget: Element wurde übersprungen, da es leer war (# " + counter + ").",0); 
+			} 																	// v1.03
+			else 																// v1.03
+				write2error("Function createWidget: Element wurde übersprungen, da es leer war (# " + counter + ").",0); // v1.03
 		}
 		
 		await createWidgetFooter(widget);
 		
 		return widget;
-    } catch(err) { 																
-        write2error("Function createWidget: " + err); 							
-        return "{}"; 															
-    } 																			
+    } catch(err) { 																// v1.02
+        write2error("Function createWidget: " + err); 							// v1.02
+        return "{}"; 															// v1.02
+    } 																			// v1.02
 }
 
-async function createWidgetHeader(widget) { 									
+async function createWidgetHeader(widget) { 									// v1.01
 try{
-	write2log("Function createWidgetHeader",1); 								
+	write2log("Function createWidgetHeader",1); 								// v1.01
 	// Create widget title
 	widget.addSpacer(1);
-	const titlestack = widget.addStack(); 										
-	titlestack.layoutHorizontally(); 											
-	titlestack.topAlignContent(); 												
-	titlestack.centerAlignContent(); 											
+	const titlestack = widget.addStack(); 										// v1.01
+	titlestack.layoutHorizontally(); 											// v1.01
+	titlestack.topAlignContent(); 												// v1.01
+	titlestack.centerAlignContent(); 											// v1.01
 	
 	const imgURL = "https://nodered.org/about/resources/media/node-red-icon.png";
 	const imgReq = await new Request(imgURL);
-	try{ 																		
+	try{ 																		// v1.02
 		const img = await imgReq.loadImage();
-		write2log("img: " + JSON.stringify(img),3); 							
+		write2log("img: " + JSON.stringify(img),3); 							// v1.01
 		let image = titlestack.addImage(img);
 		image.imageSize = new Size(sizeWidgetTitleImage, sizeWidgetTitleImage);
-	} catch(err) { 																
-		write2error("Konnte node-red Bild nicht herunterladen",0); 				
-	} 																			
+	} catch(err) { 																// v1.02
+		write2error("Konnte node-red Bild nicht herunterladen",0); 				// v1.02
+	} 																			// v1.02
 
 	
-	titlestack.addSpacer(4); 													
-	let title = titlestack.addText("node-red"); 								
-	title.font = Font.boldSystemFont(sizeWidgetTitle); 							
-	title.textColor = new Color(txtclrWidgetTitle); 							
+	titlestack.addSpacer(4); 													// v1.01
+	let title = titlestack.addText("node-red"); 								// v1.01
+	title.font = Font.boldSystemFont(sizeWidgetTitle); 							// v1.01
+	title.textColor = new Color(txtclrWidgetTitle); 							// v1.04
 	
 	widget.addSpacer(1);
 
     } catch(err) {
-        write2error("Function createWidgetHeader: " + err); 					
+        write2error("Function createWidgetHeader: " + err); 					// v1.02
         return "{}";
     }
 }
 
-async function createWidgetFooter(widget) { 									
-	try{ 																		
-		write2log("Function createWidgetFooter",1); 							
+async function createWidgetFooter(widget) { 									// v1.01
+	try{ 																		// v1.02
+		write2log("Function createWidgetFooter",1); 							// v1.01
 		// Create widget footer (Update time of script)
 		widget.addSpacer(2);
-		const updateEntry = widget.addText(update_time + ", " + version); 		
+		const updateEntry = widget.addText(update_time + ", " + version); 		// v1.02
 		updateEntry.font = Font.systemFont(sizeWidgetFooter);
-		updateEntry.textColor = new Color(txtclrWidgetFooter); 					
-		updateEntry.rightAlignText(); 											
-	    } catch(err) { 															
-        write2error("Function createWidgetFooter: " + err); 					
-        return "{}"; 															
-    } 																			
+		updateEntry.textColor = new Color(txtclrWidgetFooter); 					// v1.04
+		updateEntry.rightAlignText(); 											// v1.01
+	    } catch(err) { 															// v1.02
+        write2error("Function createWidgetFooter: " + err); 					// v1.02
+        return "{}"; 															// v1.02
+    } 																			// v1.02
 }
 
 async function createElement(hstack, element) {
 
     try {
-        write2log("Function createElement (element):" + JSON.stringify(element),1); 
+        write2log("Function createElement (element):" + JSON.stringify(element),1); // v1.01
         
         const stack = hstack.addStack();
 		stack.layoutVertically();
 
 		// Element title
-		if (element.name != 'null') { 											
+		if (element.name != 'null') { 											// v1.01
 			const title = stack.addText(element.name);
 			title.font = Font.boldSystemFont(sizeElementTitle);
-			title.textColor = new Color(txtclrElementTitle); 					
-		} 																		
-		else { 																	
-			write2error("Konnte Elementtitel nicht laden."); 					
-		} 																		
+			title.textColor = new Color(txtclrElementTitle); 					// v1.04
+		} 																		// v1.01
+		else { 																	// v1.01
+			write2error("Konnte Elementtitel nicht laden."); 					// v1.01
+		} 																		// v1.01
 		// Element data
-		if (typeof element.data == 'object') { 									
-			if (element.data != null) 											
+		if (typeof element.data == 'object') { 									// v1.01
+			if (element.data != null) 											// v1.03
 				var data = element.data;
-			else { 																
-				write2error("Elementdaten 'element.data' ist leer.",0); 		
+			else { 																// v1.03
+				write2error("Elementdaten 'element.data' ist leer.",0); 		// v1.03
 				var data = undefned;
-			} 																	
-			if (data.type != null) 												
+			} 																	// v1.03
+			if (data.type != null) 												// v1.03
 				var strType = data.type;
-			else { 																
-				write2error("Elementdaten 'element.data.type' ist leer.",0); 	
-				var strType = "text"; 											
+			else { 																// v1.03
+				write2error("Elementdaten 'element.data.type' ist leer.",0); 	// v1.03
+				var strType = "text"; 											// v1.03
 			}
-			if (data.value != null) 											
+			if (data.value != null) 											// v1.03
 				var strValue = data.value;
-			else { 																
-				write2error("Elementdaten 'element.data.value' ist leer.",0); 	
-				var strValue = "0"; 											
-			} 																	
+			else { 																// v1.03
+				write2error("Elementdaten 'element.data.value' ist leer.",0); 	// v1.03
+				var strValue = "0"; 											// v1.03
+			} 																	// v1.03
 			// Configure data output from given datatype
 			switch(strType) {
 					case "number":
-						write2log("switch datatype: number (" + strType + ")",3); 				
+						write2log("switch datatype: number (" + strType + ")",3); 				// v1.01
 						valueEntry = stack.addText(parseValue(strValue) + " " + data.unit);
 						valueEntry.font = Font.systemFont(sizeElementData);
-						if (data.color != null)													
-							valueEntry.textColor = new Color(data.color);						
-						else																	
-							valueEntry.textColor = new Color(txtclrElementData); 				
+						if (data.color != null)													// v1.05
+							valueEntry.textColor = new Color(data.color);						// v1.05
+						else																	// v1.05
+							valueEntry.textColor = new Color(txtclrElementData); 				// v1.05
 					break;
-					case "circle": 																
-						write2log("switch datatype: circle (" + strType + ")",3); 				
-						valueEntry = stack.addImage(getDiagram(parseValue(strValue), data.color)); 	
-					break; 																		
+					case "circle": 																// v1.03
+						write2log("switch datatype: circle (" + strType + ")",3); 				// v1.03
+						valueEntry = stack.addImage(getDiagram(parseValue(strValue), data.color)); 	// v1.05
+					break; 																		// v1.03
 					case "switch":
-						write2log("switch datatype: switch (" + strType + ")",3); 				
+						write2log("switch datatype: switch (" + strType + ")",3); 				// v1.01
 						if (strValue == "ON") {
 							valueEntry = stack.addText('🟢');
 							valueEntry.font = Font.systemFont(sizeElementSymbol);
@@ -427,7 +434,7 @@ async function createElement(hstack, element) {
 						}
 					break;
 					case "switch1":
-						write2log("switch datatype: switch2 (" + strType + ")",3); 				
+						write2log("switch datatype: switch2 (" + strType + ")",3); 				// v1.01
 						if (strValue == "ON") {
 							valueEntry = stack.addText('✅ ');
 							valueEntry.font = Font.systemFont(sizeElementSymbol);
@@ -438,105 +445,105 @@ async function createElement(hstack, element) {
 						}
 					break;
 					case "switchSF":
-						write2log("switch datatype: switchSF (" + strType + ")",3); 			
+						write2log("switch datatype: switchSF (" + strType + ")",3); 			// v1.01
 						var strSymbol = "questionmark.square";
-						var symclrSFSymbol = symclrSFSymbol_Default;
+						var symclrSFSymbol = "000000";
 						if (strValue == "ON") {
-							// check SFSymbols 													
+							// check SFSymbols 													// v1.04
 							if (data.SFSymbol_ON == null)
 								strSymbol = "lightbulb.fill";
 							else
 								strSymbol = data.SFSymbol_ON;
-							// check SFSymbol color 											
-							if (data.SFSymbol_ON_Color == null) 								
-								symclrSFSymbol = symclrSFSymbol_Default; 						
-							else 																
-								if (dark) 														
-									symclrSFSymbol = invertColor(data.SFSymbol_ON_Color); 		
-								else 															
-									symclrSFSymbol = data.SFSymbol_ON_Color; 					
+							// check SFSymbol color 											// v1.04
+							if (data.SFSymbol_ON_Color == null) 								// v1.04
+								symclrSFSymbol = symclrSFSymbol_Default; 						// v1.04
+							else 																// v1.04
+								if (dark) 														// v1.04
+									symclrSFSymbol = invertColor(data.SFSymbol_ON_Color); 		// v1.04
+								else 															// v1.04
+									symclrSFSymbol = data.SFSymbol_ON_Color; 					// v1.04
 							}
 						else if (strValue == "OFF") {
 							if (data.SFSymbol_OFF == null)
 								strSymbol = "lightbulb";
 							else
 								strSymbol = data.SFSymbol_OFF;
-							// check SFSymbol color 											
-							if (data.SFSymbol_OFF_Color == null) 								
-								symclrSFSymbol = symclrSFSymbol_Default; 						
-							else 																
-								if (dark) 														
-									symclrSFSymbol = invertColor(data.SFSymbol_OFF_Color); 		
-								else 															
-									symclrSFSymbol = data.SFSymbol_OFF_Color; 					
+							// check SFSymbol color 											// v1.04
+							if (data.SFSymbol_OFF_Color == null) 								// v1.04
+								symclrSFSymbol = symclrSFSymbol_Default; 						// v1.04
+							else 																// v1.04
+								if (dark) 														// v1.04
+									symclrSFSymbol = invertColor(data.SFSymbol_OFF_Color); 		// v1.04
+								else 															// v1.04
+									symclrSFSymbol = data.SFSymbol_OFF_Color; 					// v1.04
 							}
-						write2log("SFSymbol: " + strSymbol,3); 									
-						var sym = SFSymbol.named(strSymbol).image; 								
-						var col = new Color(symclrSFSymbol); 									
-						var image = stack.addImage(await tintSFSymbol(sym, col)); 				
-						write2log("Image: " + image,3); 										
+						write2log("SFSymbol: " + strSymbol,3); 									// v1.01
+						var sym = SFSymbol.named(strSymbol).image; 								// v1.04
+						var col = new Color(symclrSFSymbol); 									// v1.04
+						var image = stack.addImage(await tintSFSymbol(sym, col)); 				// v1.04
+						write2log("Image: " + image,3); 										// v1.01
 						image.imageSize = new Size(sizeElementSymbol, sizeElementSymbol);
 					break;	
-					case "SFSymbol":															
-						write2log("switch datatype: SFSymbol (" + strType + ")",3); 			
-						if (data.value == null)													
-							strSymbol = "questionmark.square";
-						else																	
-							strSymbol = data.value;												
-						if ((data.color == null) && (data.SFSymbol_Color == null)) 				
-							symclrSFSymbol = new Color(symclrSFSymbol_Default); 				
-						else { // ggf. noch prüfen, ob hexadecimal-Wert 						
-							// compatibility to version 1.04									
-							if (data.color != null)												
-								symclrSFSymbol = data.color;									
-							else if (data.SFSymbol_Color != null)								
-								symclrSFSymbol = data.SFSymbol_Color;							
-							write2log("SFSymbol: " + strSymbol + ", Color: " + symclrSFSymbol,3); 	
-							if (dark) 															
-								symclrSFSymbol = new Color(invertColor(symclrSFSymbol));		
-							else 																
-								symclrSFSymbol = new Color(symclrSFSymbol); 					
-						}																		
-						var sym = SFSymbol.named(strSymbol).image; 								
-						var col = symclrSFSymbol; 												
-						var image = stack.addImage(await tintSFSymbol(sym, col)); 				
-						write2log("Image: " + image,3); 										
-						image.imageSize = new Size(sizeElementSymbol, sizeElementSymbol);		
+					case "SFSymbol":															// v1.04
+						write2log("switch datatype: SFSymbol (" + strType + ")",3); 			// v1.04
+						if (data.value == null)													// v1.04
+							strSymbol = "questionmark.square";									// v1.04
+						else																	// v1.04
+							strSymbol = data.value;												// v1.04
+						if ((data.color == null) && (data.SFSymbol_Color == null)) 				// v1.05
+							symclrSFSymbol = new Color(symclrSFSymbol_Default); 				// v1.05
+						else { // ggf. noch prüfen, ob hexadecimal-Wert 						// v1.05
+							// compatibility to version 1.04									// v1.05
+							if (data.color != null)												// v1.05
+								symclrSFSymbol = data.color;									// v1.05
+							else if (data.SFSymbol_Color != null)								// v1.05
+								symclrSFSymbol = data.SFSymbol_Color;							// v1.05
+							write2log("SFSymbol: " + strSymbol + ", Color: " + symclrSFSymbol,3); 	// v1.05
+							if (dark) 															// v1.04
+								symclrSFSymbol = new Color(invertColor(symclrSFSymbol));		// v1.05
+							else 																// v1.04
+								symclrSFSymbol = new Color(symclrSFSymbol); 					// v1.05
+						}																		// v1.05
+						var sym = SFSymbol.named(strSymbol).image; 								// v1.04
+						var col = symclrSFSymbol; 												// v1.04
+						var image = stack.addImage(await tintSFSymbol(sym, col)); 				// v1.04
+						write2log("Image: " + image,3); 										// v1.04
+						image.imageSize = new Size(sizeElementSymbol, sizeElementSymbol);		// v1.04
 					break;						
 					default: // text
-						write2log("switch datatype: default (" + strType + ")",3); 				
+						write2log("switch datatype: default (" + strType + ")",3); 				// v1.01
 						valueEntry = stack.addText(strValue.toString() + " " + data.unit);
 						valueEntry.font = Font.systemFont(sizeElementData);
-						if (data.color != null)													
-							valueEntry.textColor = new Color(data.color);						
-						else																	
-							valueEntry.textColor = new Color(txtclrElementData); 				
+						if (data.color != null)													// v1.05
+							valueEntry.textColor = new Color(data.color);						// v1.05
+						else																	// v1.05
+							valueEntry.textColor = new Color(txtclrElementData); 				// v1.05
 			}
 		}
-		else { 																					
-			write2error("Konnte Elementdaten nicht laden."); 									
-		} 																						
+		else { 																					// v1.01
+			write2error("Konnte Elementdaten nicht laden."); 									// v1.01
+		} 																						// v1.01
     } catch(err) {
-            write2error("Function createElement (Element: " + element.name + "): " + err); 		
-			return "{}"; 																		
+            write2error("Function createElement (Element: " + element.name + "): " + err); 		// v1.03
+			return "{}"; 																		// v1.02
 	}
 }
 
 function parseValue(value) {
     try {
-        write2log("Function parsingValue: " + value,1); 										
+        write2log("Function parsingValue: " + value,1); 										// v1.01
         const number = Math.round(Number.parseFloat(value) * 100)/100;
-        write2log("parsed " + value + " to " + number,2); 										
+        write2log("parsed " + value + " to " + number,2); 										// v1.01
         return number.toFixed(1);
     } catch(err) {
-        write2error("Function parseValue: " + err,0); 											
+        write2error("Function parseValue: " + err,0); 											// v1.02
         return value;
     }
 }
 
-function getDiagram(percentage, clrCircle = clrElementCircleFill) {								
+function getDiagram(percentage, clrCircle = clrElementCircleFill) {								// v1.05
 	// Source: Chaeimg@Github (https://github.com/chaeimg/battCircle)
-	write2log("Function getDiagram: " + percentage + ", Color: " + clrCircle,1); 				
+	write2log("Function getDiagram: " + percentage + ", Color: " + clrCircle,1); 				// v1.05
 	const canvas = new DrawContext()
 
 	canvas.opaque = false  
@@ -561,21 +568,21 @@ function getDiagram(percentage, clrCircle = clrElementCircleFill) {
 		
 	// Formatting of text
 	canvas.setTextAlignedCenter()
-	canvas.setTextColor(new Color(txtclrElementCircle)) 										
-	canvas.setFont(Font.boldSystemFont(canvTextSize)) 											
-	canvas.drawTextInRect(Math.round(Number.parseFloat(percentage)).toString() + " %", canvTextRect) 
+	canvas.setTextColor(new Color(txtclrElementCircle)) 										// v1.04
+	canvas.setFont(Font.boldSystemFont(canvTextSize)) 											// v1.03
+	canvas.drawTextInRect(Math.round(Number.parseFloat(percentage)).toString() + " %", canvTextRect) // v1.03
 
 	return canvas.getImage()
 
 	function drawArc(ctr, rad, w, deg) {
-		write2log("Function drawArc (ctr, rad, w, deg): " + ctr + ", " + rad + ", " + w + ", " + deg,1); 
+		write2log("Function drawArc (ctr, rad, w, deg): " + ctr + ", " + rad + ", " + w + ", " + deg,1); // v1.01
 		bgx = ctr.x - rad
 		bgy = ctr.y - rad
 		bgd = 2 * rad
 		bgr = new Rect(bgx, bgy, bgd, bgd)
 		
-		canvas.setFillColor(new Color(clrCircle)) 												
-		canvas.setStrokeColor(new Color(clrElementCircleStroke)) 								
+		canvas.setFillColor(new Color(clrCircle)) 												// v1.05
+		canvas.setStrokeColor(new Color(clrElementCircleStroke)) 								// v1.04
 		canvas.setLineWidth(w)
 		canvas.strokeEllipse(bgr)
 	  
@@ -607,7 +614,7 @@ function countProperties(obj) {
     return count;
 }
 
-async function tintSFSymbol(image, color) { 													
+async function tintSFSymbol(image, color) { 													// v1.04
 /**
  * source: https://talk.automators.fm/t/define-the-color-of-a-sf-symbols-in-drawcontext/9897/3
  * @param {Image} image The image from the SFSymbol
@@ -646,7 +653,7 @@ async function tintSFSymbol(image, color) {
   return Image.fromData(Data.fromBase64String(base64));
 }
 
-function invertColor(hex) { 																	
+function invertColor(hex) { 																	// v1.04
 // Source: https://stackoverflow.com/questions/35969656/how-can-i-generate-the-opposite-color-according-to-current-color
     if (hex.indexOf('#') === 0) {
         hex = hex.slice(1);
@@ -666,7 +673,7 @@ function invertColor(hex) {
     return padZero(r) + padZero(g) + padZero(b);
 }
 
-function padZero(str, len) { 																	
+function padZero(str, len) { 																	// v1.04
  // Source: https://stackoverflow.com/questions/35969656/how-can-i-generate-the-opposite-color-according-to-current-color
 	len = len || 2;
     var zeros = new Array(len).join('0');
@@ -674,25 +681,66 @@ function padZero(str, len) {
 }
 
 
-function write2log(logdata, level = 0) { 														
+function write2log(logdata, level = 0) { 														// v1.01
 	if (debuglvl >= level) console.log(logdata);
-	return "{}"; 																				
+	return "{}"; 																				// v1.02
 }
 
-function write2error(err_msg_txt, critical = 1) { 												
-	if (critical == 1) 																			
-		console.error(err_msg_txt); 															
-	else 																						
-		console.warn(err_msg_txt); 																
+function write2error(err_msg_txt, critical = 1) { 												// v1.02
+	if (critical == 1) 																			// v1.03
+		console.error(err_msg_txt); 															// v1.02
+	else 																						// v1.03
+		console.warn(err_msg_txt); 																// v1.03
 	errormsg.push(err_msg_txt);
-	critical_errors = critical_errors + critical; 												
-	return "{}"; 																				
+	critical_errors = critical_errors + critical; 												// v1.02
+	return "{}"; 																				// v1.02
 }
+
+function parseWidgetParameter(input) {															// v1.06
+  const widgetParam = {};
+
+  if (!input || typeof input !== "string") return widgetParam;
+
+  // Aufteilen anhand von &
+  const parts = input.split("&");
+
+  // Erstes Element ist immer widgetname
+  widgetParam["widgetname"] = decodeURIComponent(parts[0]);
+
+  // Weitere Parameter verarbeiten (falls vorhanden)
+  for (let i = 1; i < parts.length; i++) {
+    const [key, ...rest] = parts[i].split("=");
+    if (key) {
+      const value = rest.join("="); // Falls der Wert "=" enthält
+      widgetParam[key] = decodeURIComponent(value || "");
+    }
+  }
+
+  return widgetParam;
+}
+
+function getParam(widgetParam, key, defaultValue) {													// v1.06
+  const value = widgetParam[key];
+
+  if (
+    value === undefined ||
+    value === null ||
+    (typeof value === "string" && value.trim() === "")
+  ) {
+    return defaultValue;
+  }
+
+  return value;
+}
+
 //////////////////////////////////////
 // RELEASE NOTES
 //////////////////////////////////////
+//
 // Version 1.06
-// - short bugfix as variable 'symclrSFSymbol' was not initialized 
+// - Introduced an update value for the last update of data (filled by source system)
+// - Possibility to transfer more Parameters divided by &<parametername>=<parametervalue> in Widget-Settings
+// - Introduce widget-Parameter "forceDarkMode" to force Darkmode for widget independent from Device status
 //
 // Version 1.05
 // - typos corrected
@@ -738,6 +786,7 @@ function write2error(err_msg_txt, critical = 1) {
 // BACKLOG/ IDEAS
 // - definition of text colors for different ranges of the data value (example: 0-25: green, 26-50: yellow; 51-75: orange, 76 - 100: red) 
 //	=> Declined: Logic should be set in node-red
+//
 // - maybe change dark mode reaction as described in the second way on https://www.reddit.com/r/Scriptable/comments/jus4cr/can_you_make_scripts_update_with_light_and_dark/
 // 	=> but complicated with delivered colors as they would be inverted only (and this looks sometimes weired)
 // 	=> Furthermore a lot to do as Color.dynamic wnats to have already two color datatypes.
